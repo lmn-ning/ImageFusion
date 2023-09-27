@@ -1,0 +1,1 @@
+This folder is used for a visual demonstration of the forward process (step by step adding noise)
