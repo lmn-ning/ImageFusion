@@ -29,8 +29,9 @@ def train(config_path):
     train_drop_last = config["dataset"]["train"]["drop_last"]
     train_dataset = MFI_Dataset(train_datasePath, phase=train_phase, use_dataTransform=train_use_dataTransform,
                                 resize=train_resize, imgSzie=train_imgSize)
+    # You can modify the "num_workers" parameter for different GPU devices
     train_dataloader = DataLoader(train_dataset, batch_size=train_batch_size, shuffle=train_shuffle,
-                                  drop_last=train_drop_last)
+                                  drop_last=train_drop_last,pin_memory=True,num_workers=4)
 
     # Condition Noise Predictor
     in_channels = config["Condition_Noise_Predictor"]["UNet"]["in_channels"]
